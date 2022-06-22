@@ -4,11 +4,24 @@ import java.util.Random;
 
 public class MergeSort {
 
+    /**
+     * public API for sorting
+     * @param a the array to be sorted
+     */
     public void sort(int[] a) {
         int[] aux = new int[a.length];
         sort(a, aux, 0, a.length - 1);
     }
 
+    /**
+     * recursive function for sorting
+     *
+     * In merge sort, we first sort the left half and the right half, and then merge the result
+     * @param a array to be sorted
+     * @param aux auxiliary array
+     * @param lo lower bound
+     * @param hi higher bound
+     */
     private void sort(int[] a, int[] aux, int lo, int hi) {
         if (lo >= hi) return;
         int mid = lo + (hi - lo) / 2;
@@ -17,6 +30,15 @@ public class MergeSort {
         merge(a, aux, lo, mid, hi);
     }
 
+    /**
+     * merge procedure of merge sort,
+     * after merge a[lo : hi] is sorted
+     * @param a array to be sorted
+     * @param aux auxiliary array
+     * @param lo lower bound
+     * @param mid mid index
+     * @param hi higher bound
+     */
     private void merge(int[] a, int[] aux, int lo, int mid, int hi) {
         int i = lo, j = mid + 1;
         for (int k = lo; k <= hi; k++) aux[k] = a[k];
